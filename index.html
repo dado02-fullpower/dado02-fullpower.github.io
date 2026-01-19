@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nome App — Scarica l’app</title>
+  <meta name="description" content="Scarica Nome App per iOS e Android. Semplice, veloce, minimale." />
+  <meta name="theme-color" content="#0b0f17" />
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --card:#101828;
+      --text:#e6eaf2;
+      --muted:#a6b0c3;
+      --border: rgba(255,255,255,.10);
+      --accent:#7c3aed;
+      --accent2:#22c55e;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1040px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 20% -10%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(34,197,94,.25), transparent 55%),
+        var(--bg);
+      line-height:1.4;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 64px}
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:10px 0 24px;
+    }
+    .brand{display:flex; align-items:center; gap:10px; text-decoration:none}
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background: linear-gradient(135deg, var(--accent), #60a5fa);
+      box-shadow: 0 10px 30px rgba(124,58,237,.25);
+      border:1px solid rgba(255,255,255,.15);
+    }
+    .brand span{font-weight:700; letter-spacing:.2px}
+    nav{display:flex; gap:14px; flex-wrap:wrap}
+    nav a{color:var(--muted); text-decoration:none; font-size:14px}
+    nav a:hover{color:var(--text)}
+    .hero{
+      display:grid; grid-template-columns: 1.2fr .8fr;
+      gap:26px; align-items:stretch;
+      margin-top:10px;
+    }
+    @media (max-width: 860px){ .hero{grid-template-columns:1fr} }
+    .card{
+      background: rgba(16,24,40,.78);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .hero-left{padding:28px}
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(30px, 3.6vw, 44px);
+      letter-spacing:-.6px;
+      line-height:1.1;
+    }
+    .subtitle{color:var(--muted); font-size:16px; max-width:60ch}
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 12px}
+    .pill{
+      font-size:12px; color:rgba(230,234,242,.9);
+      border:1px solid var(--border);
+      padding:7px 10px; border-radius:999px;
+      background: rgba(255,255,255,.04);
+    }
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      text-decoration:none;
+      font-weight:650;
+      background: rgba(255,255,255,.06);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      min-width: 180px;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(96,165,250,.90));
+      border-color: rgba(255,255,255,.18);
+    }
+    .btn.primary:hover{background: linear-gradient(135deg, rgba(124,58,237,1), rgba(96,165,250,1))}
+    .btn .small{display:block; font-size:11px; color:rgba(255,255,255,.85); font-weight:600; opacity:.95}
+    .btn .big{display:block; font-size:14px; font-weight:750}
+    .fineprint{margin-top:12px; color:var(--muted); font-size:13px}
+    .hero-right{padding:18px; display:grid; gap:12px}
+    .mock{
+      border-radius: 16px;
+      border:1px solid var(--border);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0)),
+        radial-gradient(800px 300px at 30% 0%, rgba(124,58,237,.25), transparent 60%),
+        rgba(255,255,255,.02);
+      overflow:hidden;
+      min-height: 360px;
+      position:relative;
+    }
+    .mock::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(200px 200px at 70% 20%, rgba(34,197,94,.25), transparent 60%),
+        radial-gradient(260px 260px at 35% 65%, rgba(96,165,250,.22), transparent 62%);
+      pointer-events:none;
+    }
+    .screen{
+      position:absolute; left:50%; top:50%;
+      transform: translate(-50%,-50%);
+      width:min(240px, 62%);
+      aspect-ratio: 9/19.5;
+      border-radius: 28px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.35);
+      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    }
+    .screen::after{
+      content:"Screenshot";
+      position:absolute; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      color: rgba(255,255,255,.55);
+      font-weight:650; letter-spacing:.3px;
+    }
+    .qr{
+      display:flex; gap:12px; align-items:center;
+      padding:14px;
+      border-radius: 16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    .qr-box{
+      width:72px; height:72px; border-radius: 12px;
+      border:1px dashed rgba(255,255,255,.25);
+      display:flex; align-items:center; justify-content:center;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+    }
+    .qr p{margin:0}
+    .section{
+      margin-top:22px;
+      padding:22px;
+    }
+    h2{margin:0 0 10px; font-size:18px; letter-spacing:-.2px}
+    .grid{
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 860px){ .grid{grid-template-columns:1fr} }
+    .feature{
+      padding:14px;
+      border-radius: 16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    .feature b{display:block; margin-bottom:6px}
+    .feature span{color:var(--muted); font-size:14px}
+    footer{
+      margin-top:22px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      color:var(--muted); font-size:13px;
+      padding:14px 0 0;
+    }
+    .links{display:flex; gap:14px; flex-wrap:wrap}
+    .links a{color:var(--muted); text-decoration:none}
+    .links a:hover{color:var(--text)}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Nome App</span>
+      </a>
+      <nav>
+        <a href="#funzionalita">Funzionalità</a>
+        <a href="#download">Download</a>
+        <a href="#privacy">Privacy</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <section class="card hero-left" id="download">
+        <h1>Scarica l’app.<br/>Inizia in 30 secondi.</h1>
+        <p class="subtitle">
+          Una landing essenziale per spingere al download: messaggio chiaro, poche distrazioni,
+          CTA subito visibili.
+        </p>
+
+        <div class="badges" aria-label="Punti chiave">
+          <div class="pill">iOS + Android</div>
+          <div class="pill">Senza pubblicità</div>
+          <div class="pill">Dati minimizzati</div>
+        </div>
+
+        <div class="cta" role="group" aria-label="Pulsanti download">
+          <!-- Sostituisci gli href con i link reali -->
+          <a class="btn primary" href="https://example.com/appstore" target="_blank" rel="noopener">
+            <span>
+              <span class="small">Disponibile su</span>
+              <span class="big">App Store</span>
+            </span>
+          </a>
+          <a class="btn" href="https://example.com/googleplay" target="_blank" rel="noopener">
+            <span>
+              <span class="small">Disponibile su</span>
+              <span class="big">Google Play</span>
+            </span>
+          </a>
+        </div>
+
+        <div class="fineprint">
+          <span>Compatibile con iOS 15+ e Android 8+.</span>
+          <span> • </span>
+          <span>Versione 1.0</span>
+        </div>
+      </section>
+
+      <aside class="card hero-right" aria-label="Anteprima app">
+        <div class="mock">
+          <div class="screen" aria-hidden="true"></div>
+        </div>
+        <div class="qr">
+          <div class="qr-box" aria-hidden="true">QR</div>
+          <div>
+            <p><b>Scansiona e scarica</b></p>
+            <p style="color:var(--muted); font-size:14px; margin-top:4px">
+              Inserisci qui il tuo QR (immagine) o un link breve.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <section class="card section" id="funzionalita">
+      <h2>Funzionalità</h2>
+      <div class="grid">
+        <div class="feature">
+          <b>Minimale</b>
+          <span>Un flusso semplice: apri, fai, finito.</span>
+        </div>
+        <div class="feature">
+          <b>Veloce</b>
+          <span>Tempi di caricamento ridotti e UI leggera.</span>
+        </div>
+        <div class="feature">
+          <b>Sicura</b>
+          <span>Raccogliamo solo ciò che serve davvero.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section" id="privacy">
+      <h2>Privacy</h2>
+      <p style="margin:0; color:var(--muted); max-width:80ch">
+        Sostituisci questo testo con la tua informativa. Esempio: “Non vendiamo i tuoi dati.
+        Puoi richiedere la cancellazione in qualsiasi momento.”
+      </p>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Nome App</div>
+      <div class="links">
+        <a href="#">Termini</a>
+        <a href="#">Privacy</a>
+        <a href="mailto:support@example.com">Supporto</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
